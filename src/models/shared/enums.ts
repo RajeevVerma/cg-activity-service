@@ -2,10 +2,13 @@
 export enum userType {
     Trainee,
     Guru,
-    Owner,
+    SuperAdmin
+}
+
+export enum userRole {
     Moderator,
-    CoGuru,
-    Admin
+    Owner,
+    FamilyHead
 }
 
 export enum DayType {

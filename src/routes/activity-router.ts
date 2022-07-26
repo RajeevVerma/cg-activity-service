@@ -31,13 +31,13 @@ router.get(p.get, async (req: Request, res: Response) => {
  * Add one activity.
  */
 router.post(p.add, async (req: Request, res: Response) => {
-    const { activity } = req.body;
+    const { activity, createdByUserPk } = req.body;
     // Check param
     if (!activity) {
         throw new ParamMissingError();
     }
     // Fetch data
-    await activitiesService.addOne(activity as IActivity);
+    await activitiesService.createOne(activity as IActivity, createdByUserPk as string);
     return res.status(CREATED).end();
 });
 

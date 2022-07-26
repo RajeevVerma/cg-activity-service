@@ -5,6 +5,7 @@ import {
     ActivityStatus,
     ActivityUserMapStatus,
     SkillLevel,
+    userRole,
     userType,
     WeekDays
 } from './shared/enums';
@@ -61,10 +62,23 @@ export const getActivitySk = (activityPk: string) => {
 export interface IActivityUserMap extends IdbItemBase {
     isCreator?: boolean;
     type: userType;
+    role: userRole;
     currentStatus: ActivityUserMapStatus;
     addDate: Date;
     removeDate?: Date;
     lastStatus?: ActivityUserMapStatus;
+}
+
+export const getActivityUserMapPk = (prefix: string, userPk: string) => {
+    return `${prefix.replace('#', '')}#${removePrefix(userPk)}`;
+}
+
+export const getActivityUserMapSk = (prefix: string, activityPk: string) => {
+    return `${prefix.replace('#', '')}#${removePrefix(activityPk)}`;
+}
+
+const removePrefix = (pk: string) => {
+    return pk.substring(pk.indexOf('#'));
 }
 
 /**
