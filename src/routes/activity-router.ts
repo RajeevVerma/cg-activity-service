@@ -16,6 +16,7 @@ export const p = {
     add: '/add',
     update: '/update',
     delete: '/delete/:id',
+    getByUser: '/get/:id'
 } as const;
 
 /**
@@ -32,6 +33,9 @@ router.get(p.get, async (req: Request, res: Response) => {
  */
 router.post(p.add, async (req: Request, res: Response) => {
     const { activity, createdByUserPk } = req.body;
+    console.log(req.body);
+    console.log(activity);
+    console.log(createdByUserPk);
     // Check param
     if (!activity) {
         throw new ParamMissingError();
@@ -68,6 +72,17 @@ router.delete(p.delete, async (req: Request, res: Response) => {
     await activitiesService.delete(id);
     return res.status(OK).end();
 });
+
+router.get(p.getByUser, async (req: Request, res: Response) => {
+    const { id } = req.params;
+    // Check param
+    if (!id) {
+        throw new ParamMissingError();
+    }
+    const activities = await activitiesService.getByUser(id);
+    return res.status(OK).json({ activities });
+}
+);
 
 // Export default
 export default router;

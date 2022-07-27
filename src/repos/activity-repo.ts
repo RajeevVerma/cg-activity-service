@@ -11,7 +11,7 @@ const dbClient = new AWS.DynamoDB.DocumentClient();
 
 
 /**
- * Get one user.
+ * Get one activity.
  * @param id
  * @returns
  */
@@ -156,6 +156,36 @@ async function deleteOne(pk: string): Promise<void> {
     }
 }
 
+/**
+ * Get activities by user pk.
+ * @param pk
+ * @returns
+ */
+ async function getByUser(pk: string): Promise<IActivity[]> {
+    console.log('Activity getByUser pk', pk);
+
+    let result: IActivity[] | undefined;
+    return new Promise((resolve, error) => {
+        dbClient.get(
+            {
+                TableName: Activity_TABLE_NAME,
+                Key: {
+                    pk: pk
+                },
+            }, function (err, data) {
+                result = data as IActivity[];
+                if (err) {
+
+                    console.error(err);
+                    error(err);
+                } else {
+                    console.log("GetItem succeeded:", data);
+                    resolve(result);
+                }
+            });
+    });
+}
+
 // Export default
 export default {
     getOne,
@@ -165,4 +195,5 @@ export default {
     add,
     update,
     delete: deleteOne,
+    getByUser
 } as const;
