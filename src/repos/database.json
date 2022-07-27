@@ -1,1 +1,33 @@
-{"users":[{"name":"Sean Maxwell","email":"sean.maxwell@gmail.com","pwdHash":"$2b$12$1mE2OI9hMS/rgH9Mi0s85OM2V5gzm7aF3gJIWH1y0S1MqVBueyjsy","role":1,"id":159123164363},{"name":"Gordan Freeman","email":"gordan.freeman@halflife.com","pwdHash":"$2b$12$1mE2OI9hMS/rgH9Mi0s85OM2V5gzm7aF3gJIWH1y0S1MqVBueyjsy","role":0,"id":906524522143},{"name":"John Smith","email":"jsmith@yahoo.com","pwdHash":"$2b$12$1mE2OI9hMS/rgH9Mi0s85OM2V5gzm7aF3gJIWH1y0S1MqVBueyjsy","role":0,"id":357437875835}]}
+{
+    "activity": {
+        "endeavourPk": "S-B-2",
+        "title": "Badminton-Training",
+        "StartDate": "30-07-2022",
+        "endDate": "30-10-2022",
+        "startTime": 6,
+        "endTime": 7,
+        "status": 0,
+        "description": "Test Description",
+        "locationPk": "LPK-1",
+        "Weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "IsInviteOnly": true,
+        "SkillStartLevel": 0,
+        "SkillEndLevel": 3,
+        "AgeStartLevel": 0,
+        "AgeEndLevel": 2,
+        "Media": {
+            "mainPicUrl": "DSC_4186.jpg",
+            "OtherPicUrls": "DSC_4101.jpg"
+        },
+        "MaxTraineeAllowed": 20
+    },
+    "createdByUserPk": "VU#07947328701"
+}
