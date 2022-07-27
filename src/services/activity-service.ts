@@ -74,6 +74,13 @@ async function deleteOne(pk: string): Promise<void> {
     return activityRepo.delete(pk);
 }
 
+async function getByUser(pk: string) {
+    const persists = await activityRepo.persists(pk);
+    if (!persists) {
+        throw new UserNotFoundError();
+    }
+    return activityRepo.getByUser(pk);
+}
 
 // Export default
 export default {
@@ -81,4 +88,5 @@ export default {
     createOne,
     updateOne,
     delete: deleteOne,
+    getByUser
 } as const;

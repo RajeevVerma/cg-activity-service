@@ -2,6 +2,8 @@
   "name": "cg-activity-service",
   "version": "0.0.0",
   "scripts": {
+    "create-db": "node dist/db-infra/db-creation/createTable.js --env=prod",
+    "create-db-local": "node dist/db-infra/db-creation/createTable.js --env=local",
     "build": "./node_modules/.bin/ts-node build.ts",
     "lint": "eslint . --ext .ts",
     "start": "node -r module-alias/register ./dist --env=production",
