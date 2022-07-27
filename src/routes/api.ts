@@ -6,7 +6,7 @@ import userRouter from './activity-router';
 const baseRouter = Router();
 
 // Setup routers
-baseRouter.use('/users', userRouter);
+baseRouter.use('/activities', userRouter);
 
 // Export default.
 export default baseRouter;

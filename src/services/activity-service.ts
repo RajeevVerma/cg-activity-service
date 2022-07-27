@@ -25,7 +25,7 @@ function getAll(): Promise<IActivity[]> {
  * @param activity 
  * @returns 
  */
-function createOne(activity: IActivity, createdByUserPk: string): Promise<void> {
+function createOne(activity: IActivity, createdByUserPk: string): Promise<IActivity> {
     if (activity.pk)
         throw Error(`Cannot create activity if pk is already set, 
             do you want to update the activity?`);
@@ -40,7 +40,7 @@ function createOne(activity: IActivity, createdByUserPk: string): Promise<void> 
         currentStatus: ActivityUserMapStatus.Active,
         addDate: new Date(),
         pk: getActivityUserMapPk(ApplicationModelPrefixes.Guru_Prefix, createdByUserPk),
-        sk: getActivityUserMapSk('', activity.pk),
+        sk: getActivityUserMapSk(ApplicationModelPrefixes.Activity_Prefix, activity.pk),
     }
 
     activityUserMapRepo.save(activityUserMap);

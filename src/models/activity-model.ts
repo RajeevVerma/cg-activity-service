@@ -48,8 +48,8 @@ export interface IActivity extends IdbItemBase {
     MaxTraineeAllowed?: number,
 }
 
-export const getActivityPk = (suffix: string) => {
-    return randomNumberTimeBased(suffix);
+export const getActivityPk = (prefix: string) => {
+    return `${prefix}#${randomNumberTimeBased('')}`;
 }
 
 export const getActivitySk = (activityPk: string) => {
@@ -78,7 +78,9 @@ export const getActivityUserMapSk = (prefix: string, activityPk: string) => {
 }
 
 const removePrefix = (pk: string) => {
-    return pk.substring(pk.indexOf('#'));
+    if (pk.indexOf('#'))
+        return pk.substring(pk.indexOf('#') + 1);
+    return pk;
 }
 
 /**

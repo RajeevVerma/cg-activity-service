@@ -101,11 +101,27 @@ async function getAll(): Promise<IActivity[]> {
  * @param activity 
  * @returns 
  */
-async function add(activity: IActivity): Promise<void> {
-    const db = await orm.openDb();
-    activity.pk = getRandomInt().toString();
-    // db.activities.push(activity);
-    return orm.saveDb(db);
+async function add(activity: IActivity): Promise<IActivity> {
+    console.log("activity-repo", activity);
+
+    return new Promise((resolve, error) => {
+        dbClient.put(
+            {
+                TableName: Activity_TABLE_NAME,
+                Item: activity,
+            },
+            function (err, data) {
+                if (err) {
+                    console.error(err);
+                    error(err);
+                } else {
+                    console.debug("PutItem succeeded:", data);
+                    resolve(activity);
+                }
+            }
+        );
+
+    });
 }
 
 /**
